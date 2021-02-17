@@ -1,0 +1,21 @@
+I would like to do a project to help the animal shelter that I volunteer at. They have a system where you can check in and out 
+as a volunteer, but I would like to help them add an aspect where you can check the dogs in and out too. 
+Features:
+1. Existing webpage: users can log in and assign themselves a duty.
+2. Dog page: provides of list of dogs in the shelter and where to find them.
+3. Dog schd: provides an outline of things the shelter needs to do that day with the dog. (i.e. addoption, surgery, furlo)
+4. Check dog out: User can schd a time to furlo a dog or can check the dog out for a walk so that staff always knows what the dog is doing. 
+5. Message option: The staff can message volunteers if a dog is checked out and the staff needs the dog for some reason. 
+
+Technologies:
+ 1. Some way to connect existing site with additions
+ 2. Java
+ 3. MySQL
+ 4. C#
+
+I will have to learn whether or not I can connet the page to the existing website or if I will have to build my own log in and out option. 
+
+https://trello.com/b/1JIFidp5/new-board
+
+
+

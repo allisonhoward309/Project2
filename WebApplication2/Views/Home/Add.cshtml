@@ -1,0 +1,47 @@
+﻿@model WebApplication2.ViewModels.AddUserViewModel;
+<h1>Add New User</h1>
+
+<form asp-controller="Home" asp-action="Add" method="post">
+    <div class="form-group">
+        <label asp-for="FirstName">Fisrt Name</label>
+        <input asp-for="FirstName" />
+        <span asp-validation-for="FirstName"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="LastName">Last Name</label>
+        <input asp-for="LastName" />
+        <span asp-validation-for="LastName"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Email">Email</label>
+        <input asp-for="Email" />
+        <span asp-validation-for="Email"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Phone">Phone (optional)</label>
+        <input asp-for="Phone" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Username">Username</label>
+        <input asp-for="Username" />
+        <span asp-validation-for="Username"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Password">Password</label>
+        <input asp-for="Password" />
+        <span asp-validation-for="Password"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="ConfirmPassword">Confirm Password</label>
+        <input asp-for="ConfirmPassword" />
+        <span asp-validation-for="ConfirmPassword"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Admin"></label>
+        <input type="checkbox" asp-for="Admin" />
+        <span asp-validation-for="Admin"></span>
+    </div>
+    <input type="submit" value="Submit" />
+</form>
+
+
