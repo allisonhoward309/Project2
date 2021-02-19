@@ -3,16 +3,25 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using WebApplication2.Data;
 using WebApplication2.Models;
 using WebApplication2.ViewModels;
 
 namespace WebApplication2.Controllers
 {
     public class DogProfileController : Controller
-    {ds
+    {
+        private UserDbContext context;
+
+        public DogProfileController(UserDbContext dbContext)
+        {
+            context = dbContext;
+        }
         public IActionResult Index()
         {
-            return View();
+            List<Dog> dogs = context.Dogs.ToList();
+            return View(dogs);
         }
         public IActionResult Add()
         {
@@ -33,9 +42,38 @@ namespace WebApplication2.Controllers
                     ColorLevel = addDogViewModel.ColorLevel,
                     Status = addDogViewModel.Status,
                 };
-                return Redirect("/Dog");
+                context.Dogs.Add(newDog);
+                context.SaveChanges();
+
+                return Redirect("/DogProfile");
             }
             return View(addDogViewModel);
         }
+        public IActionResult Delete()
+        {
+            ViewBag.dogs = context.Dogs.ToList();
+
+            return View();
+        }
+        [HttpPost]
+        public IActionResult Delete(int[] dogIds)
+        {
+            foreach (int eventId in dogIds)
+            {
+                Dog dogById = context.Dogs.Find(eventId);
+                context.Dogs.Remove(dogById);
+            }
+
+            context.SaveChanges();
+
+            return Redirect("/DogProfile");
+        }
+        public IActionResult Profile(int id)
+        {
+            Dog dog = context.Dogs.Find(id);
+            return View(dog);
+        }
+
+
     }
 }

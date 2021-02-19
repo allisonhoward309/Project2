@@ -1,5 +1,49 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
+﻿@model List<WebApplication2.Models.Dog>
+<head>
+    <link href="C:\Users\allis\OneDrive\Desktop\WebApplication2\WebApplication2\CSS\style.css" rel="stylesheet" />
+</head>
+<h1>Volunteer Center</h1>
+<table>
+    <tr>
+        <th></th>
+        <th>Color</th>
+        <th>Name</th>
+        <th>Location</th>
+        <th></th>
+        <th>Last Checked In</th>
+    </tr>
+
+    @foreach (Dog dog in Model)
+    {<tr>
+        @*For animal image*@
+        <td>
+            <img src="image/Benny.jpg"><img />
+        </td>
+
+        <td>
+            <span class="circle" style="background-color: @dog.ColorLevel"></span>
+        </td>
+
+        <td>
+            <a asp-controller="DogProfile" asp-action="Profile" asp-route-id="@dog.Id">@dog.DogName</a>
+        </td>
+
+        <td>@dog.Location</td>
+
+        @*Will want button to update to "Check In" when animal is checked out and check out if animal is in kennel*@
+        @if (dog.ColorLevel != "na")
+             {
+                 <td>
+                    <from asp-controller="DogProfile" asp-action="StatusChange" method="post">
+                        <input type="submit" value="Check Out" />
+                    </from>
+                 </td>
+         } else
+         {
+            <td></td>
+         }
+
+        @*Will want to have record of the last time the animal was checked back in so you can know which animal was most recently walked*@
+        <td></td>
+    </tr>    }
+</table>

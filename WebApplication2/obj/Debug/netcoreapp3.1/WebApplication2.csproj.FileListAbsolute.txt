@@ -62,3 +62,4 @@ C:\Users\allis\OneDrive\Desktop\WebApplication2\WebApplication2\obj\Debug\netcor
 C:\Users\allis\OneDrive\Desktop\WebApplication2\WebApplication2\obj\Debug\netcoreapp3.1\WebApplication2.dll
 C:\Users\allis\OneDrive\Desktop\WebApplication2\WebApplication2\obj\Debug\netcoreapp3.1\WebApplication2.pdb
 C:\Users\allis\OneDrive\Desktop\WebApplication2\WebApplication2\obj\Debug\netcoreapp3.1\WebApplication2.genruntimeconfig.cache
+C:\Users\allis\OneDrive\Desktop\WebApplication2\WebApplication2\obj\Debug\netcoreapp3.1\Razor\Views\DogProfile\Profile.cshtml.g.cs

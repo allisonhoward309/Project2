@@ -1,0 +1,11 @@
+﻿@model WebApplication2.Models.Dog;
+<h1>@Model.DogName</h1>
+
+@if(Model.Description != null) { 
+<h2>Dog Special Requirements:</h2>
+<p>@Model.Description</p>
+}
+
+<from asp-controller="DogProfile" asp-action="StatusChange" method="post">
+    <input type="submit" value="Check Out" />
+</from>

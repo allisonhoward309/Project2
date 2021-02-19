@@ -15,6 +15,7 @@ namespace WebApplication2.Models
         public string ColorLevel { get; set; }
         public bool Status { get; set; }
 
+
         public Dog()
         {
 
