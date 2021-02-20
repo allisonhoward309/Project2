@@ -27,16 +27,16 @@ namespace WebApplication2.Controllers
         {
             return View();
         }
-        public IActionResult Tag(string login, string keyword)
+        public IActionResult Tag(string login, string keyWord)
         {
-            ViewBag.user = context.Dogs.ToList();
+            ViewBag.user = context.Users.ToList();
 
             foreach(User u in ViewBag.user) {
                 if(login == u.Username) {
                     return RedirectToAction("Index", "DogProfile");
                 }
             }
-            return View();
+            return Redirect("/");
         }
         public IActionResult Add()
         {
@@ -55,6 +55,7 @@ namespace WebApplication2.Controllers
                     LastName = addUserViewModel.LastName,
                     Email = addUserViewModel.Email,
                     Phone = addUserViewModel.Phone,
+                    Username = addUserViewModel.Username,
                     Password = addUserViewModel.Password,
                     ConfirmPassword = addUserViewModel.ConfirmPassword,
                     Admin = addUserViewModel.Admin
