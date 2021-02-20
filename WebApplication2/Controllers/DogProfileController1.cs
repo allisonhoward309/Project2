@@ -58,9 +58,9 @@ namespace WebApplication2.Controllers
         [HttpPost]
         public IActionResult Delete(int[] dogIds)
         {
-            foreach (int eventId in dogIds)
+            foreach (int dogId in dogIds)
             {
-                Dog dogById = context.Dogs.Find(eventId);
+                Dog dogById = context.Dogs.Find(dogId);
                 context.Dogs.Remove(dogById);
             }
 

@@ -27,6 +27,17 @@ namespace WebApplication2.Controllers
         {
             return View();
         }
+        public IActionResult Tag(string login, string keyword)
+        {
+            ViewBag.user = context.Dogs.ToList();
+
+            foreach(User u in ViewBag.user) {
+                if(login == u.Username) {
+                    return RedirectToAction("Index", "DogProfile");
+                }
+            }
+            return View();
+        }
         public IActionResult Add()
         {
             AddUserViewModel addUserViewModel = new AddUserViewModel();

@@ -35,7 +35,14 @@
              {
                  <td>
                     <from asp-controller="DogProfile" asp-action="StatusChange" method="post">
-                        <input type="submit" value="Check Out" />
+                        <div class="dropdown">
+                            <button class="dropbtn">Check Out</button>
+                            <div class="dropdown-content">
+                                <p name ="status" value ="walk">Walk</p>
+                                <p name ="status" value ="Furlough">Furlough</p>
+                                <p name ="status" value="Bath">Bathe</p>
+                            </div>
+                        </div>
                     </from>
                  </td>
          } else

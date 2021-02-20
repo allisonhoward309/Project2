@@ -3,14 +3,12 @@
     <div class="form-group">
         <h1>Volunteer Center</h1>
         <div class="form-group">
-            <label asp-for="Username"></label>
-            <input asp-for="Username" />
-            <span asp-validation-for="Username"></span>
+            <label name="login">Username: </label>
+            <input />
         </div>
         <div class="form-group">
-            <label asp-for="Password"></label>
-            <input asp-for="Password" />
-            <span asp-validation-for="Password"></span>
+            <label name="keyWord">Password:</label>
+            <input />
         </div>
         <p>New users <a asp-controller="Home" asp-action="Add">Create Account</a></p>
         <input type="submit" value="Log in" />
