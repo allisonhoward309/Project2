@@ -16,13 +16,14 @@ namespace WebApplication2.Models
         public bool CheckedOut { get; set; }
 
         public string Activity { get; set; }
-        public DateTime TimeOfStatusChange { get; set; }
+        public DateTime TimeCheckOut { get; set; }
+        public DateTime TimeCheckIn { get; set; }
 
         public Dog()
         {
 
         }
-        public Dog(string dogName, string location, string description, string colorLevel, bool checkedOut, string activity, DateTime timeOfStatusChange )
+        public Dog(string dogName, string location, string description, string colorLevel, bool checkedOut, string activity, DateTime timeCheckOut, DateTime timeCheckIn)
         {
             DogName = dogName;
             Location = location;
@@ -30,7 +31,8 @@ namespace WebApplication2.Models
             ColorLevel = colorLevel;
             CheckedOut = checkedOut;
             Activity = activity;
-            TimeOfStatusChange = timeOfStatusChange;
+            TimeCheckOut = timeCheckOut;
+            TimeCheckIn = timeCheckIn;
         }
 
     }

@@ -20,7 +20,8 @@ namespace WebApplication2.Migrations
                     ColorLevel = table.Column<string>(nullable: true),
                     CheckedOut = table.Column<bool>(nullable: false),
                     Activity = table.Column<string>(nullable: true),
-                    TimeOfStatusChange = table.Column<DateTime>(nullable: false)
+                    TimeCheckOut = table.Column<DateTime>(nullable: false),
+                    TimeCheckIn = table.Column<DateTime>(nullable: false)
                 },
                 constraints: table =>
                 {

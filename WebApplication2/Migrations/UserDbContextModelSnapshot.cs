@@ -41,7 +41,10 @@ namespace WebApplication2.Migrations
                     b.Property<string>("Location")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<DateTime>("TimeOfStatusChange")
+                    b.Property<DateTime>("TimeCheckIn")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<DateTime>("TimeCheckOut")
                         .HasColumnType("datetime(6)");
 
                     b.HasKey("Id");

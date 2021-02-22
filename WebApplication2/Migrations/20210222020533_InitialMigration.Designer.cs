@@ -9,7 +9,7 @@ using WebApplication2.Data;
 namespace WebApplication2.Migrations
 {
     [DbContext(typeof(UserDbContext))]
-    [Migration("20210221225234_InitialMigration")]
+    [Migration("20210222020533_InitialMigration")]
     partial class InitialMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -43,7 +43,10 @@ namespace WebApplication2.Migrations
                     b.Property<string>("Location")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<DateTime>("TimeOfStatusChange")
+                    b.Property<DateTime>("TimeCheckIn")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<DateTime>("TimeCheckOut")
                         .HasColumnType("datetime(6)");
 
                     b.HasKey("Id");

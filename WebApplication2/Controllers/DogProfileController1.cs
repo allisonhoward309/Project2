@@ -42,8 +42,10 @@ namespace WebApplication2.Controllers
                     Location = addDogViewModel.Location,
                     Description = addDogViewModel.Description,
                     ColorLevel = addDogViewModel.ColorLevel,
-                    CheckedOut = false
-                };
+                    CheckedOut = false,
+                    TimeCheckIn = DateTime.Now
+
+            };
                 context.Dogs.Add(newDog);
                 context.SaveChanges();
 
@@ -80,8 +82,16 @@ namespace WebApplication2.Controllers
         {
             var status = context.Dogs.Find(dogID);
             status.CheckedOut = true;
-  /*          status.Activity = activity;
-            status.TimeOfStatusChange = DateTime.Now;*/
+            status.Activity = activity;
+            status.TimeCheckOut = DateTime.Now;
+            context.SaveChanges();
+            return Redirect("/dogprofile");
+        }
+        public IActionResult CheckIn(int dogID)
+        {
+            var status = context.Dogs.Find(dogID);
+            status.CheckedOut = false;
+            status.TimeCheckIn = DateTime.Now;
             context.SaveChanges();
             return Redirect("/dogprofile");
         }
