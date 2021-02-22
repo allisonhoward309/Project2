@@ -38,7 +38,7 @@
     } else if (dog.CheckedOut == false)
     {
     <td>
-        <from asp-controller="DogProfile" asp-action="CheckOut" method="post">
+        <form asp-controller="DogProfile" asp-action="CheckOut" method="post">
             @*   <div class="dropdown">
             <button class="dropbtn">Check Out</button>
             <div class="dropdown-content">
@@ -56,7 +56,7 @@
             <br />
             <input type="submit" value="Check Out" />
             <input type="hidden" name="dogID" value="@dog.Id" />
-        </from>
+        </form>
     </td>
     }
     else

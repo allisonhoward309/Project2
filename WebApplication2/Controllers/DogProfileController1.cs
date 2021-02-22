@@ -76,14 +76,14 @@ namespace WebApplication2.Controllers
             return View(dog);
         }
         [HttpPost]
-        public ActionResult CheckOut(string activity, int dogID)
+        public IActionResult CheckOut(string activity, int dogID)
         {
             var status = context.Dogs.Find(dogID);
             status.CheckedOut = true;
   /*          status.Activity = activity;
             status.TimeOfStatusChange = DateTime.Now;*/
             context.SaveChanges();
-            return View(status);
+            return Redirect("/dogprofile");
         }
     }
 }

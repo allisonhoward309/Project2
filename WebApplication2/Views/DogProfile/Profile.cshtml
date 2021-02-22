@@ -7,7 +7,7 @@
     <p>@Model.Description</p>
 }
 
-<from asp-controller="DogProfile" asp-action="CheckOut" method="post">
+<form asp-controller="DogProfile" asp-action="CheckOut" method="post">
     <select name="activity" id="activity">
         <option value="walk">Walk</option>
         <option value="furlough">Furlough</option>
@@ -16,4 +16,4 @@
     <br />
     <input type="submit" value="Check Out" />
     <input type="hidden" name="dogID" value="@Model.Id" />
-</from>
+</form>
