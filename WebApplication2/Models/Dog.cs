@@ -13,20 +13,24 @@ namespace WebApplication2.Models
         public string Location { get; set; }
         public string Description { get; set; }
         public string ColorLevel { get; set; }
-        public bool Status { get; set; }
+        public bool CheckedOut { get; set; }
 
+        public string Activity { get; set; }
+        public DateTime TimeOfStatusChange { get; set; }
 
         public Dog()
         {
 
         }
-        public Dog(string dogName, string location, string description, string colorLevel, bool status)
+        public Dog(string dogName, string location, string description, string colorLevel, bool checkedOut, string activity, DateTime timeOfStatusChange )
         {
             DogName = dogName;
             Location = location;
             Description = description;
             ColorLevel = colorLevel;
-            Status = status;
+            CheckedOut = checkedOut;
+            Activity = activity;
+            TimeOfStatusChange = timeOfStatusChange;
         }
 
     }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using WebApplication2.Data;
@@ -10,6 +11,7 @@ using WebApplication2.ViewModels;
 
 namespace WebApplication2.Controllers
 {
+
     public class DogProfileController : Controller
     {
         private UserDbContext context;
@@ -40,7 +42,7 @@ namespace WebApplication2.Controllers
                     Location = addDogViewModel.Location,
                     Description = addDogViewModel.Description,
                     ColorLevel = addDogViewModel.ColorLevel,
-                    Status = addDogViewModel.Status,
+                    CheckedOut = false
                 };
                 context.Dogs.Add(newDog);
                 context.SaveChanges();
@@ -73,7 +75,15 @@ namespace WebApplication2.Controllers
             Dog dog = context.Dogs.Find(id);
             return View(dog);
         }
-
-
+        [HttpPost]
+        public ActionResult CheckOut(string activity, int dogID)
+        {
+            var status = context.Dogs.Find(dogID);
+            status.CheckedOut = true;
+  /*          status.Activity = activity;
+            status.TimeOfStatusChange = DateTime.Now;*/
+            context.SaveChanges();
+            return View(status);
+        }
     }
 }

@@ -9,48 +9,64 @@
         <th>Color</th>
         <th>Name</th>
         <th>Location</th>
-        <th></th>
+        <th>Select Activity and Check Out Dog</th>
         <th>Last Checked In</th>
-    </tr>
+        </tr>
 
-    @foreach (Dog dog in Model)
-    {<tr>
-        @*For animal image*@
-        <td>
-            <img src="image/Benny.jpg"><img />
-        </td>
+        @foreach (Dog dog in Model)
+        {
+<tr>
+    @*For animal image*@
+    <td>
+        <img src="~/image/Benny.jpg"><img />
+    </td>
 
-        <td>
-            <span class="circle" style="background-color: @dog.ColorLevel"></span>
-        </td>
+    <td>
+        <span class="circle" style="background-color: @dog.ColorLevel"></span>
+    </td>
 
-        <td>
-            <a asp-controller="DogProfile" asp-action="Profile" asp-route-id="@dog.Id">@dog.DogName</a>
-        </td>
+    <td>
+        <a asp-controller="DogProfile" asp-action="Profile" asp-route-id="@dog.Id">@dog.DogName</a>
+    </td>
 
-        <td>@dog.Location</td>
+    <td>@dog.Location</td>
 
-        @*Will want button to update to "Check In" when animal is checked out and check out if animal is in kennel*@
-        @if (dog.ColorLevel != "na")
-             {
-                 <td>
-                    <from asp-controller="DogProfile" asp-action="StatusChange" method="post">
-                        <div class="dropdown">
-                            <button class="dropbtn">Check Out</button>
-                            <div class="dropdown-content">
-                                <p name ="status" value ="walk">Walk</p>
-                                <p name ="status" value ="Furlough">Furlough</p>
-                                <p name ="status" value="Bath">Bathe</p>
-                            </div>
-                        </div>
-                    </from>
-                 </td>
-         } else
-         {
-            <td></td>
-         }
-
-        @*Will want to have record of the last time the animal was checked back in so you can know which animal was most recently walked*@
+    @*Will want button to update to "Check In" when animal is checked out and check out if animal is in kennel*@
+    @if (dog.ColorLevel == "na")
+    {
         <td></td>
-    </tr>    }
-</table>
+    } else if (dog.CheckedOut == false)
+    {
+    <td>
+        <from asp-controller="DogProfile" asp-action="CheckOut" method="post">
+            @*   <div class="dropdown">
+            <button class="dropbtn">Check Out</button>
+            <div class="dropdown-content">
+                    <input type="submit" name="@dog.Id"value ="Walk" />
+                    <input type ="submit" name="@dog.Id" value="Furlough" />
+                    <input type ="submit" name="@dog.Id" value="Bathe" />
+            </div>
+        </div>*@
+
+            <select name="activity" id="activity">
+                <option value="walk">Walk</option>
+                <option value="furlough">Furlough</option>
+                <option value="bathe">Bathe</option>
+            </select>
+            <br />
+            <input type="submit" value="Check Out" />
+            <input type="hidden" name="dogID" value="@dog.Id" />
+        </from>
+    </td>
+    }
+    else
+    {
+    <td><input type="submit" value="Check In"></td>
+    }
+
+    @*Will want to have record of the last time the animal was checked back in so you can know which animal was most recently walked*@
+    <td></td>
+
+</tr>
+       }
+    </table>

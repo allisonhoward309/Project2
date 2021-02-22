@@ -27,12 +27,12 @@ namespace WebApplication2.Controllers
         {
             return View();
         }
-        public IActionResult Tag(string login, string keyWord)
+        public IActionResult Login(string user, string keyWord)
         {
             ViewBag.user = context.Users.ToList();
 
             foreach(User u in ViewBag.user) {
-                if(login == u.Username) {
+                if(user == u.Username && keyWord == u.Password) {
                     return RedirectToAction("Index", "DogProfile");
                 }
             }

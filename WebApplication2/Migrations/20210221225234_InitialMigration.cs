@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore.Metadata;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace WebApplication2.Migrations
@@ -17,7 +18,9 @@ namespace WebApplication2.Migrations
                     Location = table.Column<string>(nullable: true),
                     Description = table.Column<string>(nullable: true),
                     ColorLevel = table.Column<string>(nullable: true),
-                    Status = table.Column<bool>(nullable: false)
+                    CheckedOut = table.Column<bool>(nullable: false),
+                    Activity = table.Column<string>(nullable: true),
+                    TimeOfStatusChange = table.Column<DateTime>(nullable: false)
                 },
                 constraints: table =>
                 {
