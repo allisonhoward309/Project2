@@ -33,25 +33,26 @@ namespace WebApplication2.Controllers
         }
         [HttpPost]
         public IActionResult Add(AddDogViewModel addDogViewModel)
-        {
-            if (ModelState.IsValid)
             {
-                Dog newDog = new Dog
+                if (ModelState.IsValid)
                 {
-                    DogName = addDogViewModel.DogName,
-                    Location = addDogViewModel.Location,
-                    Description = addDogViewModel.Description,
-                    ColorLevel = addDogViewModel.ColorLevel,
-                    CheckedOut = false,
-                    TimeCheckIn = DateTime.Now
+                    Dog newDog = new Dog
+                    {
+                        DogName = addDogViewModel.DogName,
+                        Location = addDogViewModel.Location,
+                        Description = addDogViewModel.Description,
+                        ColorLevel = addDogViewModel.ColorLevel,
+                        CheckedOut = false,
+                        TimeCheckIn = DateTime.Now,
+                        ImageSource = "/image/" + addDogViewModel.DogName + ".jpg"
 
-            };
-                context.Dogs.Add(newDog);
-                context.SaveChanges();
+                    };
+                    context.Dogs.Add(newDog);
+                    context.SaveChanges();
 
-                return Redirect("/DogProfile");
-            }
-            return View(addDogViewModel);
+                    return Redirect("/DogProfile");
+                }
+                return View(addDogViewModel);
         }
         public IActionResult Delete()
         {
@@ -78,22 +79,36 @@ namespace WebApplication2.Controllers
             return View(dog);
         }
         [HttpPost]
-        public IActionResult CheckOut(string activity, int dogID)
+        public IActionResult CheckOut(string activity, int dogID, string page)
         {
             var status = context.Dogs.Find(dogID);
             status.CheckedOut = true;
             status.Activity = activity;
             status.TimeCheckOut = DateTime.Now;
             context.SaveChanges();
-            return Redirect("/dogprofile");
+            if (page == "DogProfile")
+            {
+                return Redirect("/" + page);
+            }
+            else
+            {
+                return Redirect("/dogprofile/" + page + "/" + dogID);
+            }
         }
-        public IActionResult CheckIn(int dogID)
+        public IActionResult CheckIn(int dogID, string page)
         {
             var status = context.Dogs.Find(dogID);
             status.CheckedOut = false;
             status.TimeCheckIn = DateTime.Now;
             context.SaveChanges();
-            return Redirect("/dogprofile");
+            if (page == "DogProfile")
+            {
+                return Redirect("/" + page);
+            }
+            else
+            {
+                return Redirect("/dogprofile/" + page + "/" + dogID);
+            }
         }
     }
 }
