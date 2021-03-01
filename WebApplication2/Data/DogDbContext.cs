@@ -5,12 +5,12 @@ using WebApplication2.Models;
 
 namespace WebApplication2.Data
 {
-    public class UserDbContext : IdentityDbContext<IdentityUser>  
+    public class DogDbContext : IdentityDbContext<IdentityUser>  
     {
         public DbSet<Dog> Dogs { get; set; }
 
 
-        public UserDbContext(DbContextOptions<UserDbContext> options) : base(options)
+        public DogDbContext(DbContextOptions<DogDbContext> options) : base(options)
         {
         }
     }

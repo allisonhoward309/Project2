@@ -11,12 +11,13 @@ using WebApplication2.ViewModels;
 
 namespace WebApplication2.Controllers
 {
+    [Authorize]
 
     public class DogProfileController : Controller
     {
-        private UserDbContext context;
+        private DogDbContext context;
 
-        public DogProfileController(UserDbContext dbContext)
+        public DogProfileController(DogDbContext dbContext)
         {
             context = dbContext;
         }
@@ -43,9 +44,10 @@ namespace WebApplication2.Controllers
                     Description = addDogViewModel.Description,
                     ColorLevel = addDogViewModel.ColorLevel,
                     CheckedOut = false,
-                    TimeCheckIn = DateTime.Now
+                    TimeCheckIn = DateTime.Now,
+                    ImageSource = "/image/" + addDogViewModel.DogName + ".jpg"
 
-            };
+                };
                 context.Dogs.Add(newDog);
                 context.SaveChanges();
 
@@ -78,22 +80,36 @@ namespace WebApplication2.Controllers
             return View(dog);
         }
         [HttpPost]
-        public IActionResult CheckOut(string activity, int dogID)
+        public IActionResult CheckOut(string activity, int dogID, string page)
         {
             var status = context.Dogs.Find(dogID);
             status.CheckedOut = true;
             status.Activity = activity;
             status.TimeCheckOut = DateTime.Now;
             context.SaveChanges();
-            return Redirect("/dogprofile");
+            if (page == "DogProfile")
+            {
+                return Redirect("/" + page);
+            }
+            else
+            {
+                return Redirect("/dogprofile/" + page + "/" + dogID);
+            }
         }
-        public IActionResult CheckIn(int dogID)
+        public IActionResult CheckIn(int dogID, string page)
         {
             var status = context.Dogs.Find(dogID);
             status.CheckedOut = false;
             status.TimeCheckIn = DateTime.Now;
             context.SaveChanges();
-            return Redirect("/dogprofile");
+            if (page == "DogProfile")
+            {
+                return Redirect("/" + page);
+            }
+            else
+            {
+                return Redirect("/dogprofile/" + page + "/" + dogID);
+            }
         }
     }
 }

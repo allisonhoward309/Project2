@@ -26,7 +26,7 @@ namespace WebApplication2
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
-            /*            services.AddDbContext<UserDbContext>(options =>
+            /*            services.AddDbContext<DogDbContext>(options =>
                         options.UseMySql(Configuration.GetConnectionString("DefaultConnection")));*/
             services.AddRazorPages();
         }
@@ -48,6 +48,8 @@ namespace WebApplication2
             app.UseStaticFiles();
 
             app.UseRouting();
+
+            app.UseAuthentication();
 
             app.UseAuthorization();
 

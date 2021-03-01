@@ -18,12 +18,13 @@ namespace WebApplication2.Models
         public string Activity { get; set; }
         public DateTime TimeCheckOut { get; set; }
         public DateTime TimeCheckIn { get; set; }
+        public string ImageSource { get; set; }
 
         public Dog()
         {
 
         }
-        public Dog(string dogName, string location, string description, string colorLevel, bool checkedOut, string activity, DateTime timeCheckOut, DateTime timeCheckIn)
+        public Dog(string dogName, string location, string description, string colorLevel, bool checkedOut, string activity, DateTime timeCheckOut, DateTime timeCheckIn, string imageSrc)
         {
             DogName = dogName;
             Location = location;
@@ -33,6 +34,7 @@ namespace WebApplication2.Models
             Activity = activity;
             TimeCheckOut = timeCheckOut;
             TimeCheckIn = timeCheckIn;
+            ImageSource = imageSrc;
         }
 
     }

@@ -21,9 +21,4 @@
     <None Include="wwwroot\image\Benny.jpg" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Areas\Identity\Data\" />
-    <Folder Include="Migrations\" />
-  </ItemGroup>
-
 </Project>

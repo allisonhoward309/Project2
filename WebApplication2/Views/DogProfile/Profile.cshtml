@@ -1,19 +1,42 @@
 ﻿@model WebApplication2.Models.Dog;
 <h1>@Model.DogName</h1>
+<br />
+<br />
+<img src="@Model.ImageSource" class="dogProfile">
+<img />
 
 @if (Model.Description != null)
 {
     <h2>Dog Special Requirements:</h2>
     <p>@Model.Description</p>
 }
+<br />
+<br />
 
-<form asp-controller="DogProfile" asp-action="CheckOut" method="post">
-    <select name="activity" id="activity">
-        <option value="walk">Walk</option>
-        <option value="furlough">Furlough</option>
-        <option value="bathe">Bathe</option>
-    </select>
+@if (Model.CheckedOut == false)
+{
+    <form asp-controller="DogProfile" asp-action="CheckOut" method="post">
+        <select name="activity" id="activity">
+            <option value="walk">Walk</option>
+            <option value="furlough">Furlough</option>
+            <option value="bath">Bath</option>
+        </select>
+        <br />
+        <input type="submit" value="Check Out" />
+        <input type="hidden" name="dogID" value="@Model.Id" />
+        <input type="hidden" name="page" value="Profile" />
+    </form>
+    <p><b>Last Checked In:</b> @Model.TimeCheckIn</p>
+}
+else
+{
+    <h3>@Model.DogName is out a for @Model.Activity</h3>
+    <form sp-controller="DogProfile" asp-action="CheckIn" method="post">
+        <input type="submit" value="Check In" />
+        <input type="hidden" name="dogID" value="@Model.Id" />
+        <input type="hidden" name="page" value="Profile" />
+    </form>
+    <p>Last Checked Out: @Model.TimeCheckOut</p>
     <br />
-    <input type="submit" value="Check Out" />
-    <input type="hidden" name="dogID" value="@Model.Id" />
-</form>
+
+}

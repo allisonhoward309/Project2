@@ -83,7 +83,7 @@ namespace WebApplication2.Areas.Identity.Pages.Account
                 if (result.Succeeded)
                 {
                     _logger.LogInformation("User logged in.");
-                    return LocalRedirect(returnUrl);
+                    return LocalRedirect("/DogProfile");
                 }
                 if (result.RequiresTwoFactor)
                 {
