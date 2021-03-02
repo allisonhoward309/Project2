@@ -84,7 +84,7 @@ namespace WebApplication2.Areas.Identity.Pages.Account
                 if (result.Succeeded)
                 {
                     _logger.LogInformation("User logged in.");
-                    return LocalRedirect("/" + ReturnUrl);
+                    return LocalRedirect("/");
                 }
                 if (result.RequiresTwoFactor)
                 {
