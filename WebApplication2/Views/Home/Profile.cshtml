@@ -15,7 +15,7 @@
 
 @if (Model.CheckedOut == false)
 {
-    <form asp-controller="DogProfile" asp-action="CheckOut" method="post">
+    <form asp-controller="Home" asp-action="CheckOut" method="post">
         <select name="activity" id="activity">
             <option value="walk">Walk</option>
             <option value="furlough">Furlough</option>
@@ -30,8 +30,8 @@
 }
 else
 {
-    <h3>@Model.DogName is out a for @Model.Activity</h3>
-    <form sp-controller="DogProfile" asp-action="CheckIn" method="post">
+    <h3>@Model.DogName is out for a @Model.Activity</h3>
+    <form sp-controller="Home" asp-action="CheckIn" method="post">
         <input type="submit" value="Check In" />
         <input type="hidden" name="dogID" value="@Model.Id" />
         <input type="hidden" name="page" value="Profile" />

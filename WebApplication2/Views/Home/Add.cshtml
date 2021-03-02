@@ -1,48 +1,30 @@
-﻿@*@model WebApplication2.ViewModels.AddUserViewModel;
+﻿@model WebApplication2.ViewModels.AddDogViewModel;
 <h1>Add New User</h1>
 
 <form asp-controller="Home" asp-action="Add" method="post">
     <div class="form-group">
-        <label asp-for="FirstName">Fisrt Name</label>
-        <input asp-for="FirstName" />
-        <span asp-validation-for="FirstName"></span>
+        <label asp-for="DogName">Dog Name</label>
+        <input asp-for="DogName" />
+        <span asp-validation-for="DogName"></span>
     </div>
     <div class="form-group">
-        <label asp-for="LastName">Last Name</label>
-        <input asp-for="LastName" />
-        <span asp-validation-for="LastName"></span>
+        <label asp-for="Location"></label>
+        <input asp-for="Location" />
+        <span asp-validation-for="Location"></span>
     </div>
     <div class="form-group">
-        <label asp-for="Email">Email</label>
-        <input asp-for="Email" />
-        <span asp-validation-for="Email"></span>
+        <label asp-for="Description"></label>
+        <textarea asp-for="Description" ></textarea>
+        <span asp-validation-for="Description"></span>
     </div>
     <div class="form-group">
-        <label asp-for="Phone">Phone (optional)</label>
-        <input asp-for="Phone" />
-    </div>
-    <div class="form-group">
-        <label asp-for="Username">Username</label>
-        <input asp-for="Username" />
-        <span asp-validation-for="Username"></span>
-    </div>
-    <div class="form-group">
-        <label asp-for="Password">Password</label>
-        <input type="password" asp-for="Password" />
-        <span asp-validation-for="Password"></span>
-    </div>
-    <div class="form-group">
-        <label asp-for="ConfirmPassword">Confirm Password</label>
-        <input type="password" asp-for="ConfirmPassword" />
-        <span asp-validation-for="ConfirmPassword"></span>
-    </div>
-    <div class="form-group">
-        <label asp-for="Admin"></label>
-        <input type="checkbox" asp-for="Admin" />
-        <span asp-validation-for="Admin"></span>
+        <label asp-for="ColorLevel">Color Level</label>
+        <select asp-for="ColorLevel">
+            <option value="na">N/A</option>
+            <option value="Green">Green</option>
+            <option value="Yellow">Yellow</option>
+            <option value="Orange">Orange</option>
+        </select>
     </div>
     <input type="submit" value="Submit" />
 </form>
-
-
-*@

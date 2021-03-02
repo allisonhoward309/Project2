@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using WebApplication2.Areas.Identity.Pages.Data;
 using WebApplication2.Data;
 
 [assembly: HostingStartup(typeof(WebApplication2.Areas.Identity.IdentityHostingStartup))]
@@ -17,7 +18,7 @@ namespace WebApplication2.Areas.Identity
                     options.UseMySql(
                         context.Configuration.GetConnectionString("DefaultConnection")));
 
-                services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+                services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = true)
                     .AddEntityFrameworkStores<DogDbContext>();
             });
         }

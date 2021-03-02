@@ -1,4 +1,81 @@
-﻿<h1>Welcome Volunteers</h1>
-<p>Welcome to the volunteer activity management portal. Here we track volunteer interactions with available dogs to better keep track of our animals</p>
+﻿@model List<WebApplication2.Models.Dog>
+<head>
+    <link href="C:\Users\allis\OneDrive\Desktop\WebApplication2\WebApplication2\CSS\style.css" rel="stylesheet" />
+</head>
+<h1>Volunteer Center</h1>
+<table id="listTable">
+    <tr>
+        <th></th>
+        <th>Color</th>
+        <th>Name</th>
+        <th>Location</th>
+        <th>Select Activity and <br /> Check Out Dog</th>
+        <th>Last Checked In</th>
+    </tr>
 
-<p>Please <a id="login" asp-area="Identity" asp-page="/Account/Login">Login</a></p>
+    @foreach (Dog dog in Model)
+    {
+        <tr>
+            @*For animal image*@
+            <td>
+                <img src="@dog.ImageSource" id="dogList"><img />
+            </td>
+
+            <td>
+                <span class="circle" style="background-color: @dog.ColorLevel"></span>
+            </td>
+
+            <td>
+                <a asp-controller="Home" asp-action="Profile" asp-route-id="@dog.Id">@dog.DogName</a>
+            </td>
+
+            <td>@dog.Location</td>
+
+            @*Will want button to update to "Check In" when animal is checked out and check out if animal is in kennel*@
+            @if (dog.ColorLevel == "na")
+            {
+                <td></td>
+            }
+            else if (dog.CheckedOut == false)
+            {
+                <td>
+                    <form asp-controller="Home" asp-action="CheckOut" method="post">
+                        @*   <div class="dropdown">
+                                <button class="dropbtn">Check Out</button>
+                                <div class="dropdown-content">
+                                        <input type="submit" name="@dog.Id"value ="Walk" />
+                                        <input type ="submit" name="@dog.Id" value="Furlough" />
+                                        <input type ="submit" name="@dog.Id" value="Bathe" />
+                                </div>
+                            </div>*@
+
+                        <select name="activity" id="activity">
+                            <option value="walk">Walk</option>
+                            <option value="furlough">Furlough</option>
+                            <option value="bath">Bath</option>
+                        </select>
+                        <br />
+                        <input type="submit" value="Check Out" />
+                        <input type="hidden" name="dogID" value="@dog.Id" />
+                        <input type="hidden" name="page" value="Home" />
+                    </form>
+                </td>
+
+                <td><p><b>Last Checked In:</b> @dog.TimeCheckIn</p></td>
+            }
+            else
+            {
+                <td>
+                    <form asp-controller="Home" asp-action="CheckIn" method="post">
+                        <input type="submit" value="Check In" />
+                        <input type="hidden" name="dogID" value="@dog.Id" />
+                        <input type="hidden" name="page" value="Home" />
+                    </form>
+                </td>
+                <td><p>Last Checked Out: @dog.TimeCheckOut</p></td>
+            }
+
+        </tr>
+
+    }
+</table>
