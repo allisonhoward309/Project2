@@ -9,9 +9,10 @@ Features:
 
 Technologies:
  1. Some way to connect existing site with additions
- 2. Java
+ 2. CSS
  3. MySQL
  4. C#
+ 
 
 I will have to learn whether or not I can connet the page to the existing website or if I will have to build my own log in and out option. 
 
